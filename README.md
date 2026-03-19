@@ -145,6 +145,5 @@ This project showcases practical data science and machine learning skills:
 
 - Incorporate tyre compound data (soft, medium, hard)
 - Include weather and track temperature
-- Use time-series or sequential models
 - Improve feature balance to reduce reliance on previous lap time
 - Integrate real-time data for dynamic strategy simulation
