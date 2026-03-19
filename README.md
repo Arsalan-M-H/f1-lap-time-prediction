@@ -69,6 +69,10 @@ A **Random Forest Regressor** was used due to the non-linear relationships obser
 ### Key insight:
 The model relies heavily on **previous lap time**, indicating strong sequential dependency in lap performance.
 
+The simulation results indicate that a one-stop strategy produces the lowest total race time, outperforming both two-stop and three-stop strategies by approximately 60–65 seconds.
+
+This suggests that, within the model, the time lost during pit stops outweighs the performance gains from fresher tyres. The findings highlight a limitation in the model’s ability to fully capture tyre degradation effects, likely due to the absence of features such as tyre compound and track conditions, as well as the model’s reliance on previous lap time as a strong predictor.
+
 ## Data Leakage Consideration
 
 A key challenge identified was **data leakage**:
