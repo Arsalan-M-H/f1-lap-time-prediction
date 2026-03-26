@@ -2,11 +2,11 @@
 
 ## Project Overview
 
-This project analyses Formula 1 race data to model and simulate **lap times and race strategies** using machine learning. The goal is to understand how factors such as tyre degradation, fuel load, and race progression influence lap performance, and to use these insights to simulate different pit stop strategies.
+This project analyses Formula 1 race data to model and simulate lap times and race strategies using machine learning. The goal was to understand how factors such as tyre degradation, fuel load, and race progression impact lap performance, and to use these insights to simulate different pit stop strategies.
 
 The project combines data engineering, exploratory analysis, and a tree-based machine learning model to predict lap times and evaluate total race duration under different strategy scenarios.
 
-The dataset consists of lap-level race data, pit stop information, and race metadata. By merging and engineering these datasets, the project builds a simulation framework that can estimate race outcomes based on different pit stop decisions.
+The dataset consists of lap-level race data, pit stop information, and overall race data. By merging and engineering these datasets, the project builds a simulation that can estimate race outcomes based on different pit stop decisions.
 
 ## Dataset
 
@@ -29,7 +29,7 @@ The analysis and modelling focus on answering key performance and strategy quest
 - What is the effect of fuel load on lap time?
 - How do pit stops influence total race time?
 - What is the average pit stop duration per circuit?
-- Which pit strategies (1-stop, 2-stop, 3-stop) result in faster total race times?
+- Which pit strategies (1-stop, 2-stop, 3-stop) result in faster total race times at a specific circuit?
 
 ## Data Processing & Feature Engineering
 
@@ -38,7 +38,7 @@ The dataset required significant preprocessing to ensure reliable modelling:
 - Merged lap times with pit stop data to identify pit laps
 - Converted pit stop indicators into binary features
 - Converted time values from milliseconds to seconds
-- Filtered races from 2014 onwards to reflect modern F1 regulations
+- Filtered races from 2014 onwards to reflect the hybrid F1 era.
 - Removed wet races to reduce variability caused by extreme conditions
 - Removed outliers using the IQR method for:
   - Lap times
@@ -54,7 +54,7 @@ The dataset required significant preprocessing to ensure reliable modelling:
 
 ## Machine Learning Model
 
-A **Random Forest Regressor** was used due to the non-linear relationships observed between features.
+A Random Forest Regressor was used due to the non-linear relationships observed between features.
 
 ### Model details:
 - Model: RandomForestRegressor
@@ -102,7 +102,7 @@ The simulation iteratively predicts each lap using:
 - Fuel load
 - Race progression
 
-Pit stop time is added using the **average pit stop duration per circuit**.
+Pit stop time is added using the average pit stop duration per circuit**.
 
 ## Strategy Comparison
 
