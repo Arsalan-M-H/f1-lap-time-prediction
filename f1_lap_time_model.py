@@ -207,14 +207,14 @@ print(final_dataset['lap_time'].std())
 # The difference between our mean and median is 0.8 seconds suggesting a slight right skew, this would indicate certain lap times at the top end slightly inflating the mean. However, with 223,855 rows it does point towards a is reasonably balanced without extreme skewness.
 # The standard deviation is quite high at 13.63 seconds which indicates high variability in lap times, the challenge we are facing is that there are no features provided for the model to understand the reason behind that variability, features such as fuel load, tyre deg and race progress were approximated, but not accurate enough. Features that are missing that would help are fuel load, tyre deg, starting tyre compound, tyre compound after pit, and track temperature. 
 # Tried different combinations of features to train the model on. In every instance, prev_lap_time held a feature importance of over 0.65. The model is relying heavily on prev_lap_time and we do not have the features or data to include to balance feature importance.
-# Training the model with delta brought the mae and rmse down significantly. However, upon creating the race strategy simulation function it was clear that inputting lap delta before the lap had been predicted created data leakage.
+# Training the model with delta brought the mae and mse down significantly. However, upon creating the race strategy simulation function it was clear that inputting lap delta before the lap had been predicted created data leakage.
 
 lap_model = RandomForestRegressor(n_estimators = 300, max_depth = 20, min_samples_split = 5, min_samples_leaf = 2, max_features = 2, random_state = 42, n_jobs = -1)
 lap_model.fit(lap_time_X_train, lap_time_Y_train)
 lap_predictions = lap_model.predict(lap_time_X_test)
 
 lap_mae = mean_absolute_error(lap_time_Y_test, lap_predictions)
-lap_rmse = np.sqrt(mean_squared_error(lap_time_Y_test, lap_predictions))   
+lap_mse = np.sqrt(mean_squared_error(lap_time_Y_test, lap_predictions))   
 
 # Calculating average pit stop per circuitId to add onto total race time, adding this as a model input would require future information that is not available at prediction time
 average_pit_duration = lap_times_with_pit[lap_times_with_pit['pit_stop'] == 1]
@@ -223,7 +223,7 @@ print(average_pit_duration.head(10))
 
 # Lap model evaluation
 print(lap_mae)
-print(lap_rmse)
+print(lap_mse)
 
 importance_df = pd.DataFrame({
     'feature': lap_time_X.columns,
